@@ -1,4 +1,4 @@
-#Peckr - a twitter clone
+# Peckr - a twitter clone
 
 Collaborators:
 - Amen.U
