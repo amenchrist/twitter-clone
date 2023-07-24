@@ -1,3 +1,11 @@
+#Peckr - a twitter clone
+
+Collaborators:
+- Amen.U
+
+
+
+
 # Getting Started with Create React App
 
 */ LEENA TEST 
