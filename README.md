@@ -3,13 +3,12 @@
 Collaborators:
 - Amen.U
 - Shanika.L
+- Leena.J
 
 
 
 
 # Getting Started with Create React App
-
-*/ LEENA TEST 
 
 
 
