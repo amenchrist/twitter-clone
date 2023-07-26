@@ -46,9 +46,32 @@ const LeftSideBar = () => {
 
   const [username, setUsername] = useState('TechTalentTeam1');
 
+  const user = {
+    name: 'Andrew',
+    email: "andrrew@th.com",
+    password: 'pass',
+    username: 'and1'
+  }
+
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: JSON.stringify(user)
+  }
+
   useEffect(() => {
-    fetch('http://localhost:8080/users').then(res => res.json()).then(data => setUsername(data[0].username))
+    fetch('http://localhost:8080/users', options)
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      // setUsername(data[1].username)
+    })
   }, [])
+
+  
   return (
     <section className=" sticky top-0 w-[23%] flex flex-col h-screen px-4 ">
         <div className="sidebar flex flex-col items-stretch h-full space-y-4 mt-4">
