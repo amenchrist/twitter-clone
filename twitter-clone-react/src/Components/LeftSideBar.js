@@ -45,6 +45,10 @@ const NAV_ITEMS = [
 const LeftSideBar = () => {
 
   const [username, setUsername] = useState('TechTalentTeam1');
+
+  useEffect(() => {
+    fetch('http://localhost:8080/users').then(res => res.json()).then(data => console.log(data))
+  }, [])
   return (
     <section className=" sticky top-0 w-[23%] flex flex-col h-screen px-4 ">
         <div className="sidebar flex flex-col items-stretch h-full space-y-4 mt-4">

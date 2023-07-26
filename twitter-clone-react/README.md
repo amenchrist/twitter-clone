@@ -1,11 +1,21 @@
-# Getting Started with Create React App
+# Peckr - a twitter clone
 
-*/ LEENA TEST 
+Collaborators:
+- Amen.U
+- Shanika.L
+- Leena.J
+- Greg Ross
+- Iryna Y
+
+
+
+
+# Getting Started with Create React App
 
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-np
+
 ## Available Scripts
 
 In the project directory, you can run:
