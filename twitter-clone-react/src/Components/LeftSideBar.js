@@ -47,7 +47,7 @@ const LeftSideBar = () => {
   const [username, setUsername] = useState('TechTalentTeam1');
 
   useEffect(() => {
-    fetch('http://localhost:8080/users').then(res => res.json()).then(data => console.log(data))
+    fetch('http://localhost:8080/users').then(res => res.json()).then(data => setUsername(data[0].username))
   }, [])
   return (
     <section className=" sticky top-0 w-[23%] flex flex-col h-screen px-4 ">
