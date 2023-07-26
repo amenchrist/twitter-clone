@@ -92,7 +92,7 @@ const LeftSideBar = () => {
         </button>
 
     </section>
-    /*<main>Home timeline</main><section>right section</section>*/
+ 
   )
 }
 
