@@ -7,7 +7,7 @@ import { useStateContext } from '../contextProvider';
 
 const Timeline = () => {
 
-  const {server} = useStateContext()
+  const {server, theme} = useStateContext()
 
   const placeholders = [
     {
@@ -43,6 +43,19 @@ const Timeline = () => {
   const [ postContent, setPostContent ] = useState('');
   const [ ready, setReady ] = useState(false);
   const [ error, setError ] = useState(false);
+  // const [ theme, setTheme ] = useState("dark");
+
+  // useEffect(() => {
+  //   if (theme === "light") {
+  //     document.documentElement.classList.add("light");
+  //   } else {
+  //     document.documentElement.classList.remove("light");
+  //   }
+  // }, [theme]);
+
+  // const themeToggleBtns = () => {
+  //   setTheme (theme === "light" ? "dark" : "light");
+  // }; 
  
   useEffect(()=>{
     const post = {
@@ -79,10 +92,10 @@ const Timeline = () => {
   })
 
   return ( 
-    <main className=" timeline sticky top-0 flex max-w-[625px] w-[50%] h-full min-h-screen flex-col border-l-[0.5px] border-r-[0.5px] border-gray-600">
-      <h1 className="home_icon text-xl font-bold p-6 backdrop-blur bg-black/10 sticky top-0"> Home </h1>
-      <div className=" border-t-[0.5px] px-4 border-b-[0.5px] flex items-strecth py-6 space-x-2 border-gray-600 relative">
-        <div className="w-10 h-10 bg-slate-400 rounded-full flex-none"></div>
+    <main className= {`timeline sticky top-0 flex max-w-[1200px] w-[65%] h-full min-h-screen flex-col border-l-[0.5px] border-r-[0.5px] border-gray-600 ${theme === 'light' ? 'light-mode' : ''}`}>
+      <h1 className="home_icon text-xl font-bold p-6 backdrop-blur bg-black/10 light:bg-white/10 sticky top-0"> Home </h1>
+      <div className=" border-t-[0.5px] px-4 border-b-[0.5px] flex items-stretch py-6 space-x-2 border-gray-600 relative">
+        <div className="w-10 h-10 bg-slate-400 light:bg-slate-50 rounded-full flex-none"></div>
         <div  className="flex flex-col w-full h-full">
           <textarea 
             autoFocus
@@ -107,19 +120,19 @@ const Timeline = () => {
         {posts.map((p,i) =>
           ( 
             <div key={i} className=" border-b-[0.5px] border-gray-600 p-4 flex space-x-4">
-              <img  className="w-10 h-10 bg-slate-200 rounded-full" src={`https://robohash.org/${p.author_id}`} alt={"Footballer and child"} />
+              <img  className="w-10 h-10 bg-slate-200 light:bg-slate-900 rounded-full" src={`https://robohash.org/${p.author_id}`} alt={"Footballer and child"} />
               <div className="flex flex-col ">
                 <div className="flex items-center w-full justify-between ">
                   <div className="flex items-center space-x-1 w-full">
                     <div className="font-bold">~ Ross Codes ~</div>
-                    <div className="text-gray-500">@Grossthecoder</div>
-                    <div className="text-gray-500"> <BsDot/></div>
-                    <div className="text-gray-500">42 minutes ago</div>
+                    <div className="text-gray-500 light:text-gray-50">@Grossthecoder</div>
+                    <div className="text-gray-500 light:text-gray-50"> <BsDot/></div>
+                    <div className="text-gray-500 light:text-gray-50">42 minutes ago</div>
                   </div>
-                  <div className="text-gray-500"><BsThreeDots/></div>
+                  <div className="text-gray-500 light:text-gray-50"><BsThreeDots/></div>
                 </div>
-                <div className="text-white text-base ">{p.content}</div>
-                <div className="bg-slate-400 aspect-square w-full h-96 rounded-xl mt-2">
+                <div className="text-white light:text-slate-900 text-base ">{p.content}</div>
+                <div className="bg-slate-400 light:bg-slate-50 aspect-square w-full h-96 rounded-xl mt-2">
                   <img src={`https://picsum.photos/id/3${i}/487/300`} alt={"Footballer and child"} />
                 </div>
                 <div className="flex items-center justify-between space-x-20 mt-4 w-full">
