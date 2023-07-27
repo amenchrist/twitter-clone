@@ -68,7 +68,7 @@ const NAV_ITEMS = [
                 <a
                 className="hover:bg-white/10 light:bg-slate-800 text-2xl transition duration-200 flex items-center justify-start w-fit space-x-4
                 rounded-3xl py-2 px-6"
-                 href={item.href}
+                 href={item.href}np
                   key={item.title}>
                     <div>
                         <item.icon />
