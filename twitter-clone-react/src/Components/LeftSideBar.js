@@ -49,6 +49,8 @@ const LeftSideBar = () => {
   useEffect(() => {
     fetch('http://localhost:8080/users').then(res => res.json()).then(data => setUsername(data[0].username))
   }, [])
+
+  
   return (
     <section className=" sticky top-0 w-[23%] flex flex-col h-screen px-4 ">
         <div className="sidebar flex flex-col items-stretch h-full space-y-4 mt-4">
