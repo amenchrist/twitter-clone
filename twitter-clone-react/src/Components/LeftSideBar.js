@@ -5,15 +5,16 @@ import {FaEnvelope} from 'react-icons/fa';
 import {BsFillBookmarkFill} from 'react-icons/bs';
 import {MdOutlinePortrait} from 'react-icons/md';
 import {RiHome7Fill} from 'react-icons/ri';
-<<<<<<< HEAD
 import {ImTwitter} from 'react-icons/im';
 import {PiSunBold} from 'react-icons/pi';
+import {PiMoonBold} from 'react-icons/pi';
+
+
 // import Link from 'next/link';
-=======
-import {ImTwitter} from 'react-icons/im'
->>>>>>> 20e090615f5c3f87f67e1e301360300c51324cbc
+
 import React, {useState, useEffect } from 'react';
 import { useStateContext } from '../contextProvider';
+
 
 const NAV_ITEMS = [
   {
@@ -54,23 +55,18 @@ const NAV_ITEMS = [
 ];
 
 
-const LeftSideBar = () => {
 
-  const {server} = useStateContext();
-
-  const [username, setUsername] = useState('TechTalentTeam1');
-
-  useEffect(() => {
+ //  useEffect(() => {
     // fetch(`${server}/users`).then(res => res.json()).then(data => setUsername(data[0].username))
-  }, [])
+ // }, [])
 
-  
+  const LeftSideBar = () => {
   return (
-    <section className=" sticky top-0 w-[23%] flex flex-col h-screen px-4 ">
+    <section className='sticky top-0 w-[23%] flex flex-col h-screen px-4 '>
         <div className="sidebar flex flex-col items-stretch h-full space-y-4 mt-4">
             {NAV_ITEMS.map((item) => (
                 <a
-                className="hover:bg-white/10 text-2xl transition duration-200 flex items-center justify-start w-fit space-x-4
+                className="hover:bg-white/10 light:bg-slate-800 text-2xl transition duration-200 flex items-center justify-start w-fit space-x-4
                 rounded-3xl py-2 px-6"
                  href={item.href}
                   key={item.title}>
@@ -89,15 +85,15 @@ const LeftSideBar = () => {
         
 
         </div>
-        <button className="left_btn rounded-full flex items-center space-x-2 bg-transparent p-4 text-center hover:bg-white/10
+        <button className="left_btn rounded-full flex items-center space-x-2 bg-transparent p-4 text-center hover:bg-white/10 light:bg-slate-800
          transition duration-200 w-full">
 
             <div className="flex items-center space-x-2">
-            <div className="rounded-full bg-slate-400 w-10 h-10"></div>
+            <div className="rounded-full bg-slate-400 light:bg-white/10 w-10 h-10"></div>
             <div className="text-left text-sm">
                 <div className="font-semibold">Tech Talent Academy</div>
-                <div className="">@{username}!</div>
-            </div>
+                <div className=""> @TechtalentTeam1 </div>
+            </div> 
             </div>
             <div>
                 <BsThreeDots/>
