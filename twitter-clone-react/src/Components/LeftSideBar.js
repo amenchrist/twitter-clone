@@ -6,8 +6,8 @@ import {BsFillBookmarkFill} from 'react-icons/bs';
 import {MdOutlinePortrait} from 'react-icons/md';
 import {RiHome7Fill} from 'react-icons/ri';
 import {ImTwitter} from 'react-icons/im'
-// import Link from 'next/link';
 import React, {useState, useEffect } from 'react';
+import { useStateContext } from '../contextProvider';
 
 const NAV_ITEMS = [
   {
@@ -17,6 +17,7 @@ const NAV_ITEMS = [
   {
     title:'Home',
     icon:RiHome7Fill,
+    href: '/'
   },
   {
     title:'Explore',
@@ -37,6 +38,7 @@ const NAV_ITEMS = [
   {
     title:'Profile',
     icon:MdOutlinePortrait,
+    href: '/Profile'
   },
 
 ];
@@ -44,10 +46,12 @@ const NAV_ITEMS = [
 
 const LeftSideBar = () => {
 
+  const {server} = useStateContext();
+
   const [username, setUsername] = useState('TechTalentTeam1');
 
   useEffect(() => {
-    fetch('http://localhost:8080/users').then(res => res.json()).then(data => setUsername(data[0].username))
+    // fetch(`${server}/users`).then(res => res.json()).then(data => setUsername(data[0].username))
   }, [])
 
   
@@ -58,7 +62,7 @@ const LeftSideBar = () => {
                 <a
                 className="hover:bg-white/10 text-2xl transition duration-200 flex items-center justify-start w-fit space-x-4
                 rounded-3xl py-2 px-6"
-                 href={`/${item.title.toLowerCase()}`}
+                 href={item.href}
                   key={item.title}>
                     <div>
                         <item.icon />

@@ -3,17 +3,42 @@ import {FaRegComment, FaRetweet, FaRegHeart} from 'react-icons/fa';
 import {BiSolidBarChartAlt2} from 'react-icons/bi';
 import {FiShare} from 'react-icons/fi';
 import React, {useState, useEffect } from 'react'
-
-
+import { useStateContext } from '../contextProvider';
 
 const Timeline = () => {
 
-  // const arr = [1,2,3,4,5];
-  // const [a, b,c,d] = arr; 
+  const {server} = useStateContext()
 
-  // console.log(a,b)
-
-  // useState(0) = [ a_value, a_function ]
+  const placeholders = [
+    {
+      author_id: 1,
+      content: "lord wh wid uw dniu wd ihiw dwuie iuje pwpiwue hwpeiu hep weuhpw ehpwep ejp"
+    },
+    {
+      author_id: 2,
+      content: "lord wh wid uw dniu wd ihiw dwuie iuje pwpiwue hwpeiu hep weuhpw ehpwep ejp"
+    },
+    {
+      author_id: 3,
+      content: "lord wh wid uw dniu wd ihiw dwuie iuje pwpiwue hwpeiu hep weuhpw ehpwep ejp"
+    },
+    {
+      author_id: 4,
+      content: "lord wh wid uw dniu wd ihiw dwuie iuje pwpiwue hwpeiu hep weuhpw ehpwep ejp"
+    },
+    {
+      author_id: 5,
+      content: "lord wh wid uw dniu wd ihiw dwuie iuje pwpiwue hwpeiu hep weuhpw ehpwep ejp"
+    },
+    {
+      author_id: 6,
+      content: "lord wh wid uw dniu wd ihiw dwuie iuje pwpiwue hwpeiu hep weuhpw ehpwep ejp"
+    },
+    {
+      author_id: 7,
+      content: "lord wh wid uw dniu wd ihiw dwuie iuje pwpiwue hwpeiu hep weuhpw ehpwep ejp"
+    }
+  ]
 
   const [ postContent, setPostContent ] = useState('');
   const [ ready, setReady ] = useState(false);
@@ -34,23 +59,23 @@ const Timeline = () => {
       body: JSON.stringify(post)
     }
 
-    if(ready){
-      fetch("http://localhost:8080/posts", options).then(res => res.json()).then(data => {
-        if(data){
-          setPostContent('');
-          setReady(false)
-        } else {
-          setError(true)
-        }
-      })
-    }
+    // if(ready){
+    //   fetch(`${server}/posts`, options).then(res => res.json()).then(data => {
+    //     if(data){
+    //       setPostContent('');
+    //       setReady(false)
+    //     } else {
+    //       setError(true)
+    //     }
+    //   })
+    // }
 
-  }, [ready, postContent])
+  }, [ready, postContent, server])
 
-  const [ posts, setPosts] = useState([]);
+  const [ posts, setPosts] = useState(placeholders);
 
   useEffect(() => {
-    fetch("http://localhost:8080/posts").then(res => res.json()).then(data => setPosts(data.reverse()));
+    // fetch(`${server}/posts`).then(res => res.json()).then(data => setPosts(data.reverse()));
   })
 
   return ( 
@@ -60,12 +85,12 @@ const Timeline = () => {
         <div className="w-10 h-10 bg-slate-400 rounded-full flex-none"></div>
         <div  className="flex flex-col w-full h-full">
           <textarea 
-            
-          className="w-full h-full text-xl placeholder:text-gray-600 bg-transparent border-b-[0.5px] border-gray-600 p-4 outline-none border-none" 
-          placeholder="Write a Peck!"
-          value={postContent}
-          onChange={(e) => setPostContent(e.target.value)}
-          disabled={error}
+            autoFocus
+            className="w-full h-full text-xl placeholder:text-gray-600 bg-transparent border-b-[0.5px] border-gray-600 p-4 outline-none border-none" 
+            placeholder="Write a Peck!"
+            value={postContent}
+            onChange={(e) => setPostContent(e.target.value)}
+            disabled={error}
           />      
           <div className="w-full justify-between items-center flex">
             <div></div>
@@ -78,7 +103,7 @@ const Timeline = () => {
           </div>
         </div>
       </div>
-      <div className="  flex flex-col">
+      <div className="flex flex-col">
         {posts.map((p,i) =>
           ( 
             <div key={i} className=" border-b-[0.5px] border-gray-600 p-4 flex space-x-4">
