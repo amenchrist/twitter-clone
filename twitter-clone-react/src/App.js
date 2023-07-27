@@ -1,6 +1,8 @@
+import { Outlet } from "react-router-dom";
 import LeftSideBar from "./Components/LeftSideBar";
-import Timeline from "./Components/Main";
 import RightSideSection from "./Components/RightSection"
+import Router from './routes';
+import './App.css';
 
 const Home = () => {
   return (
@@ -8,7 +10,8 @@ const Home = () => {
       <div className="max-w-[70vw] w-full h-full flex relative ">
         
         <LeftSideBar />
-        <Timeline />
+        <Router />
+        <Outlet />
         <RightSideSection />
        
       </div>
