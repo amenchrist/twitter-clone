@@ -5,7 +5,8 @@ import {FaEnvelope} from 'react-icons/fa';
 import {BsFillBookmarkFill} from 'react-icons/bs';
 import {MdOutlinePortrait} from 'react-icons/md';
 import {RiHome7Fill} from 'react-icons/ri';
-import {ImTwitter} from 'react-icons/im'
+import {ImTwitter} from 'react-icons/im';
+import {PiSunBold} from 'react-icons/pi';
 // import Link from 'next/link';
 import React, {useState, useEffect } from 'react';
 
@@ -37,6 +38,10 @@ const NAV_ITEMS = [
   {
     title:'Profile',
     icon:MdOutlinePortrait,
+  },
+  {
+    title:'Light/Dark',
+    icon:PiSunBold,
   },
 
 ];
@@ -70,9 +75,6 @@ const LeftSideBar = () => {
             Peck
         </button>
 
-        <button  className='switch mode' > 
-        Display
-        </button> 
         
 
         </div>
@@ -95,6 +97,7 @@ const LeftSideBar = () => {
  
   )
 }
+
 
 
 export default LeftSideBar;
