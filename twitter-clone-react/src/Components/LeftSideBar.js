@@ -5,10 +5,15 @@ import {FaEnvelope} from 'react-icons/fa';
 import {BsFillBookmarkFill} from 'react-icons/bs';
 import {MdOutlinePortrait} from 'react-icons/md';
 import {RiHome7Fill} from 'react-icons/ri';
+<<<<<<< HEAD
 import {ImTwitter} from 'react-icons/im';
 import {PiSunBold} from 'react-icons/pi';
 // import Link from 'next/link';
+=======
+import {ImTwitter} from 'react-icons/im'
+>>>>>>> 20e090615f5c3f87f67e1e301360300c51324cbc
 import React, {useState, useEffect } from 'react';
+import { useStateContext } from '../contextProvider';
 
 const NAV_ITEMS = [
   {
@@ -18,6 +23,7 @@ const NAV_ITEMS = [
   {
     title:'Home',
     icon:RiHome7Fill,
+    href: '/'
   },
   {
     title:'Explore',
@@ -38,6 +44,7 @@ const NAV_ITEMS = [
   {
     title:'Profile',
     icon:MdOutlinePortrait,
+    href: '/Profile'
   },
   {
     title:'Light/Dark',
@@ -49,11 +56,15 @@ const NAV_ITEMS = [
 
 const LeftSideBar = () => {
 
+  const {server} = useStateContext();
+
   const [username, setUsername] = useState('TechTalentTeam1');
 
   useEffect(() => {
-    fetch('http://localhost:8080/users').then(res => res.json()).then(data => console.log(data))
+    // fetch(`${server}/users`).then(res => res.json()).then(data => setUsername(data[0].username))
   }, [])
+
+  
   return (
     <section className=" sticky top-0 w-[23%] flex flex-col h-screen px-4 ">
         <div className="sidebar flex flex-col items-stretch h-full space-y-4 mt-4">
@@ -61,7 +72,7 @@ const LeftSideBar = () => {
                 <a
                 className="hover:bg-white/10 text-2xl transition duration-200 flex items-center justify-start w-fit space-x-4
                 rounded-3xl py-2 px-6"
-                 href={`/${item.title.toLowerCase()}`}
+                 href={item.href}
                   key={item.title}>
                     <div>
                         <item.icon />
