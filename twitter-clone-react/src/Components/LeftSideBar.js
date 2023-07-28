@@ -51,7 +51,7 @@ const LeftSideBar = () => {
   const [username, setUsername] = useState('TechTalentTeam1');
 
   useEffect(() => {
-    // fetch(`${server}/users`).then(res => res.json()).then(data => setUsername(data[0].username))
+    fetch(`${server}/users`).then(res => res.json()).then(data => setUsername(data[0].username))
   }, [])
 
   

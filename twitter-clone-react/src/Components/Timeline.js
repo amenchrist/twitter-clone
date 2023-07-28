@@ -49,6 +49,12 @@ const Timeline = () => {
       content : postContent,
       author_id : 1
     }
+
+    const comment = {
+      content : postContent,
+      author_id : 1,
+      post_id: 1
+    }
   
     const options = {
       method: 'POST',
@@ -59,24 +65,24 @@ const Timeline = () => {
       body: JSON.stringify(post)
     }
 
-    // if(ready){
-    //   fetch(`${server}/posts`, options).then(res => res.json()).then(data => {
-    //     if(data){
-    //       setPostContent('');
-    //       setReady(false)
-    //     } else {
-    //       setError(true)
-    //     }
-    //   })
-    // }
+    if(ready){
+      fetch(`${server}/posts`, options).then(res => res.json()).then(data => {
+        if(data){
+          setPostContent('');
+          setReady(false)
+        } else {
+          setError(true)
+        }
+      })
+    }
 
   }, [ready, postContent, server])
 
   const [ posts, setPosts] = useState(placeholders);
 
   useEffect(() => {
-    // fetch(`${server}/posts`).then(res => res.json()).then(data => setPosts(data.reverse()));
-  })
+    fetch(`${server}/posts`).then(res => res.json()).then(data => setPosts(data.reverse()));
+  }, [ready, server])
 
   return ( 
     <main className=" timeline sticky top-0 flex max-w-[625px] w-[50%] h-full min-h-screen flex-col border-l-[0.5px] border-r-[0.5px] border-gray-600">
@@ -119,8 +125,8 @@ const Timeline = () => {
                   <div className="text-gray-500"><BsThreeDots/></div>
                 </div>
                 <div className="text-white text-base ">{p.content}</div>
-                <div className="bg-slate-400 aspect-square w-full h-96 rounded-xl mt-2">
-                  <img src={`https://picsum.photos/id/3${i}/487/300`} alt={"Footballer and child"} />
+                <div className="">
+                  <img src={`https://picsum.photos/id/3${Math.ceil(Math.random())*i}/487/300`} alt={"Footballer and child"} />
                 </div>
                 <div className="flex items-center justify-between space-x-20 mt-4 w-full">
                   <div className="rounded-full hover:bg-white/10 transition duration-200 p-3 cursor-pointer"><FaRegComment/>45</div>
